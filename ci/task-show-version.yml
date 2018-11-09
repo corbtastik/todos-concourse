@@ -5,9 +5,8 @@ image_resource:
   type: docker-image
   source: {repository: busybox}
 
-# inputs:
-#   - name: resource-pipeline
-#   - name: resource-version
-
+inputs:
+  - name: resource-kit
+  - name: resource-version
 run:
   path: resource-kit/ci/task_show_version.sh        
