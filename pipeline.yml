@@ -8,7 +8,7 @@ resources:
 - name: resource-pipeline
   type: git
   source:
-    uri: https://github.com/corbtastik/todos-cicd.git
+    uri: https://github.com/corbtastik/todos-concourse.git
     branch: master    
 # - name: resource-version
 #   type: semver
