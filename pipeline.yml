@@ -1,14 +1,32 @@
 ---
+resources:
+- name: resource-source-code
+  type: git
+  source:
+    uri: https://github.com/corbtastik/todos-webflux.git
+    branch: master
+- name: resource-pipeline
+  type: git
+  source:
+    uri: https://github.com/corbtastik/todos-cicd.git
+    branch: master    
+# - name: resource-version
+#   type: semver
+#   source:
+#     driver: git
+#     uri: git@github.com:corbtastik/todos-version.git
+#     branch: master
+#     initial_version: 1.0.0.SNAPSHOT
+#     file: version
+#     private_key: ((private-key-github))
 jobs:
-- name: job-hello-world
-  public: true
+- name: job-build
   plan:
-  - task: hello-world
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source: {repository: busybox}
-      run:
-        path: echo
-        args: [hello world]
+  - get: resource-source-code
+    trigger: true
+  - get: resource-pipeline
+    trigger: true
+  # - get: resource-version
+  #   params: {bump: patch}
+  - task: task-build
+    file: resource-pipeline/ci/build.yml
