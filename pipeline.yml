@@ -16,9 +16,9 @@ resources:
     driver: git
     uri: git@github.com:corbtastik/todos-version.git
     branch: master
-    initial_version: 1.0.0.PIPELINE
     file: version
     private_key: ((private-key-github))
+    initial_version: 1.0.0.PIPELINE
 jobs:
 - name: job-build
   plan:
@@ -28,5 +28,10 @@ jobs:
     trigger: true
   - get: resource-version
     params: {bump: patch}
+  - get: resource-version
+    params: {bump: patch}
   - task: task-build
     file: resource-pipeline/ci/build.yml
+  - put: resource-version
+    params: {file: resource-version/version}    
+
