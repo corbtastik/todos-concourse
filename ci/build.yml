@@ -9,11 +9,11 @@ image_resource:
 
 inputs:
   - name: resource-source-code
-  - name: resource-pipeline
+  - name: resource-kit
   - name: resource-version
 
 outputs:
   - name: resource-build-output
 
 run:
-  path: resource-pipeline/ci/build.sh        
+  path: resource-kit/ci/build.sh        
