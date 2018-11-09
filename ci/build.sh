@@ -1,7 +1,7 @@
 #!/bin/sh
 export MAVEN_OPTS="-Xms2g -Xmx2g"
-# export VERSION=`cat resource-source-code/version`
-export VERSION='1.0.0.CHANGEME'
+export VERSION=`cat resource-version/version`
+# export VERSION='1.0.0.CHANGEME'
 echo "Building version $VERSION"
 ls -al
 cd resource-source-code

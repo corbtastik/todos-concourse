@@ -10,6 +10,7 @@ image_resource:
 inputs:
   - name: resource-source-code
   - name: resource-pipeline
+  - name: resource-version
 
 outputs:
   - name: resource-build-output
