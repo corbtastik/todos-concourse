@@ -14,11 +14,11 @@ resources:
   type: semver
   source:
     driver: git
-    uri: git@github.com:corbtastik/todos-version.git
+    uri: https://github.com/corbtastik/todos-version.git
     branch: master
     file: version
-    private_key: ((private-key-github))
-    initial_version: 1.0.0.PIPELINE
+    # private_key: ((private-key-github))
+    # initial_version: 1.0.0.PIPELINE
 jobs:
 - name: job-build
   plan:
@@ -28,10 +28,10 @@ jobs:
     trigger: true
   - get: resource-version
     params: {bump: patch}
-  - get: resource-version
-    params: {bump: patch}
-  - task: task-build
-    file: resource-pipeline/ci/build.yml
-  - put: resource-version
-    params: {file: resource-version/version}    
+  - task: task-show-version
+    file: resource-pipeline/ci/task-show-version.yml    
+  # - task: task-build
+  #   file: resource-pipeline/ci/build.yml
+  # - put: resource-version
+  #   params: {file: resource-version/version}    
 
