@@ -5,12 +5,6 @@ resources:
   source:
     uri: https://github.com/corbtastik/todos-concourse.git
     branch: master    
-- name: resource-source-code
-  type: git
-  source:
-    uri: git@github.com:corbtastik/todos-webflux.git
-    branch: master
-    private_key: {{private-key-github}}
 - name: resource-semver
   type: semver
   source:
@@ -18,7 +12,19 @@ resources:
     uri: git@github.com:corbtastik/todos-version.git
     branch: master
     file: version
-    private_key: {{private-key-github}}    
+    private_key: {{private-key-github}}     
+- name: resource-source-code
+  type: git
+  source:
+    uri: git@github.com:corbtastik/todos-webflux.git
+    branch: master
+    private_key: {{private-key-github}}   
+- name: resource-release
+  type: github-release
+  source:
+    owner: corbtastik
+    repository: todos-webflux
+    access_token: {{private-token-github}}    
 jobs:
 - name: job-build
   plan:
@@ -32,5 +38,12 @@ jobs:
     file: resource-kit/ci/build.yml     
   - put: resource-semver
     params: {file: resource-semver/version}
+  - put: resource-release
+    params:
+      name: resource-build-output/release-name
+      tag: resource-build-output/release-tags
+      body: resource-build-output/release-body
+      globs:
+      - resource-build-output/*.jar    
 
 
