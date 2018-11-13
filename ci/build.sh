@@ -1,6 +1,6 @@
 #!/bin/sh
 export MAVEN_OPTS="-Xms2g -Xmx2g"
-export VERSION=`cat version/number`
+export VERSION=`cat resource-semver/version`
 echo "Building version $VERSION"
 cd resource-source-code
   ./mvnw clean package -Dversion=${VERSION} -Dmaven.test.skip=true
