@@ -1,0 +1,16 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: ubuntu}
+
+inputs:
+  - name: resource-source-code
+  - name: resource-semver  
+
+outputs:
+  - name: resource-build-output
+
+run:
+  path: resource-kit/ci/release.sh        

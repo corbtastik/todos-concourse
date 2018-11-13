@@ -34,14 +34,16 @@ jobs:
     trigger: true   
   - get: resource-semver
     params: {bump: patch, pre: HOWDY}
-  - task: task-maven-build
-    file: resource-kit/ci/build.yml     
+  - task: task-build
+    file: resource-kit/ci/build.yml
+  - task: task-release
+    file: resource-kit/ci/release.yml    
   - put: resource-semver
     params: {file: resource-semver/version}
   - put: resource-release
     params:
       name: resource-build-output/release-name
-      tag: resource-build-output/release-tags
+      tag: resource-build-output/release-tag
       body: resource-build-output/release-body
       globs:
       - resource-build-output/*.jar    
