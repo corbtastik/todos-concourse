@@ -5,23 +5,32 @@ resources:
   source:
     uri: https://github.com/corbtastik/todos-concourse.git
     branch: master    
-- name: resource-version
+- name: resource-source-code
   type: git
   source:
-    uri: git@github.com:corbtastik/todos-version.git
+    uri: git@github.com:corbtastik/todos-webflux.git
     branch: master
     private_key: {{private-key-github}}
+- name: resource-semver
+  type: semver
+  source:
+    driver: git
+    uri: git@github.com:corbtastik/todos-version.git
+    branch: master
+    file: version
+    private_key: {{private-key-github}}    
 jobs:
 - name: job-build
   plan:
   - get: resource-kit
     trigger: true
-  - get: resource-version
-    params: {bump: patch}
-  - task: task-show-version
-    file: resource-kit/ci/task-show-version.yml    
-  # - task: task-build
-  #   file: resource-kit/ci/build.yml
-  # - put: resource-version
-  #   params: {file: resource-version/version}    
+  - get: resource-source-code
+    trigger: true   
+  - get: resource-semver
+    params: {bump: patch, pre: HOWDY}
+  - task: task-maven-build
+    file: resource-kit/ci/build.yml     
+  - put: resource-semver
+    params: {file: resource-semver/version}
+
 
