@@ -6,3 +6,4 @@ cd resource-source-code
   ./mvnw versions:set -DnewVersion=${VERSION}
   ./mvnw clean package -Dmaven.test.skip=true
 cd ..
+cp -R resource-source-code/target resource-build-output/.

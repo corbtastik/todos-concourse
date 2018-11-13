@@ -6,7 +6,7 @@ image_resource:
   source: {repository: ubuntu}
 
 inputs:
-  - name: resource-source-code
+  - name: resource-build-output
   - name: resource-kit
   - name: resource-semver  
 
