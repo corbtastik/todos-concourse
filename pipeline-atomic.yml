@@ -42,9 +42,9 @@ jobs:
     params: {file: resource-semver/version}
   - put: resource-release
     params:
-      name: resource-build-output/release-name
-      tag: resource-build-output/release-tag
-      body: resource-build-output/release-body
+      name: resource-release-output/release-name
+      tag: resource-release-output/release-tag
+      body: resource-release-output/release-body
       globs:
       - resource-build-output/*.jar    
 

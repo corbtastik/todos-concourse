@@ -11,7 +11,7 @@ inputs:
   - name: resource-semver  
 
 outputs:
-  - name: resource-build-output
+  - name: resource-release-output
 
 run:
   path: resource-kit/ci/release.sh        
