@@ -26,7 +26,7 @@ resources:
     repository: {{resource_release_repository}}
     access_token: {{private-token-github}}    
 jobs:
-- name: job-build
+- name: job-release
   plan:
   - get: resource-concourse
     trigger: true
