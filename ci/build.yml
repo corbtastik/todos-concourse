@@ -9,11 +9,11 @@ image_resource:
 
 inputs:
   - name: resource-source-code
-  - name: resource-kit
-  - name: resource-semver
+  - name: resource-concourse
+  - name: resource-version
 
 outputs:
   - name: resource-build-output
 
 run:
-  path: resource-kit/ci/build.sh        
+  path: resource-concourse/ci/build.sh        

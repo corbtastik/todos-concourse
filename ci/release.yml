@@ -7,11 +7,11 @@ image_resource:
 
 inputs:
   - name: resource-build-output
-  - name: resource-kit
-  - name: resource-semver  
+  - name: resource-concourse
+  - name: resource-version  
 
 outputs:
   - name: resource-release-output
 
 run:
-  path: resource-kit/ci/release.sh        
+  path: resource-concourse/ci/release.sh        

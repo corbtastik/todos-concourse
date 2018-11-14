@@ -1,0 +1,4 @@
+resource_source_code_uri: git@github.com:corbtastik/todos-webflux.git
+resource_version_uri: git@github.com:corbtastik/todos-version.git
+resource_release_owner: corbtastik
+resource_release_repository: todos-webflux

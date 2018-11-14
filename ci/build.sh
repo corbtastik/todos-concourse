@@ -1,6 +1,6 @@
 #!/bin/sh
 export MAVEN_OPTS="-Xms2g -Xmx2g"
-export VERSION=`cat resource-semver/version`
+export VERSION=`cat resource-version/version`
 echo "Building version $VERSION"
 cd resource-source-code
   ./mvnw versions:set -DnewVersion=${VERSION}

@@ -6,7 +6,7 @@ image_resource:
   source: {repository: ubuntu}
 
 inputs:
-  - name: resource-kit
+  - name: resource-concourse
   - name: resource-version
 run:
-  path: resource-kit/ci/task_show_version.sh        
+  path: resource-concourse/ci/task_show_version.sh        
