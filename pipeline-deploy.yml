@@ -1,0 +1,35 @@
+---
+resources:
+- name: resource-concourse
+  type: git
+  source:
+    uri: {{resource_concourse_uri}}
+    branch: {{resource_concourse_branch}}  
+- name: resource-release
+  type: github-release
+  source:
+    owner: {{resource_release_owner}}
+    repository: {{resource_release_repository}}
+    access_token: {{private-token-github}}  
+- name: resource-cf
+  type: cf
+  source:
+    api: {{resource_cf_api}}
+    username: {{resource_cf_username}}
+    password: {{resource_cf_password}}
+    organization: {{resource_cf_org}}
+    space: {{resource_cf_space}}
+    skip_cert_check: false
+jobs:
+- name: job-deploy
+  plan:
+  - get: resource-concourse
+    trigger: true
+  - get: resource-release
+    trigger: true   
+  - task: task-deploy
+    file: resource-concourse/ci/deploy.yml
+  # - put: resource-cf
+  #   params:
+  #     manifest: resource-release-output/manifest.yml
+  #     vars_files: resource-release-output/vars.yml

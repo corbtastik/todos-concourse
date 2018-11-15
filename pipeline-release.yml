@@ -3,21 +3,21 @@ resources:
 - name: resource-concourse
   type: git
   source:
-    uri: https://github.com/corbtastik/todos-concourse.git
-    branch: master    
+    uri: {{resource_concourse_uri}}
+    branch: {{resource_concourse_branch}}    
 - name: resource-version
   type: semver
   source:
     driver: git
     uri: {{resource_version_uri}}
-    branch: master
+    branch: {{resource_version_branch}}
     file: version
     private_key: {{private-key-github}}     
 - name: resource-source-code
   type: git
   source:
     uri: {{resource_source_code_uri}}
-    branch: master
+    branch: {{resource_source_code_branch}}
     private_key: {{private-key-github}}   
 - name: resource-release
   type: github-release
@@ -33,7 +33,7 @@ jobs:
   - get: resource-source-code
     trigger: true   
   - get: resource-version
-    params: {bump: patch, pre: HOWDY}
+    params: {bump: {{resource_version_bump}}, pre: {{resource_version_pre}}}
   - task: task-build
     file: resource-concourse/ci/build.yml
   - task: task-release

@@ -24,6 +24,7 @@
 /nbdist/
 /.nb-gradle/
 
+### May lice invade your shoes should you commit these files ###
 .creds
 creds.yml
 creds.yaml
