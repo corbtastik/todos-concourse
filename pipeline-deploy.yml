@@ -29,7 +29,7 @@ jobs:
     trigger: true   
   - task: task-deploy
     file: resource-concourse/ci/deploy.yml
-  # - put: resource-cf
-  #   params:
-  #     manifest: resource-release-output/manifest.yml
-  #     vars_files: resource-release-output/vars.yml
+  - put: resource-cf
+    params:
+      manifest: resource-release-output/manifest.yml
+      vars_files: resource-release-output/vars.yml
