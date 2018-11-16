@@ -3,9 +3,9 @@ applications:
 - name: todos-webflux
   memory: 1G
   routes:
-  - route: https://todos-webflux.cfapps.io
+  - route: https://corbs-todos-webflux.cfapps.io
   path: ${artifact}
-  buildpack: java_buildpack
+  buildpacks: java_buildpack
   env:
-    TODOS_API_LIMIT: 512
+    TODOS_API_LIMIT: 128
     EUREKA_CLIENT_ENABLED: false  
