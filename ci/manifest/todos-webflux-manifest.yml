@@ -5,7 +5,8 @@ applications:
   routes:
   - route: https://corbs-todos-webflux.cfapps.io
   path: ${artifact}
-  buildpacks: java_buildpack
+  buildpacks: 
+  - java_buildpack
   env:
     TODOS_API_LIMIT: 128
     EUREKA_CLIENT_ENABLED: false  
