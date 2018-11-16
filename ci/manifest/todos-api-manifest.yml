@@ -1,0 +1,12 @@
+---
+applications:
+- name: todos-api
+  memory: 1G
+  routes:
+  - route: https://corbs-todos-api.cfapps.io
+  path: ${artifact}
+  buildpacks: 
+  - java_buildpack
+  env:
+    TODOS_API_LIMIT: 128
+    EUREKA_CLIENT_ENABLED: false      
