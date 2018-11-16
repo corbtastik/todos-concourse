@@ -4,7 +4,7 @@ applications:
   memory: 1G
   routes:
   - route: https://todos-webflux.cfapps.io
-  path: ((artifact))
+  path: ${artifact}
   buildpack: java_buildpack
   env:
     TODOS_API_LIMIT: 512

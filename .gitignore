@@ -30,3 +30,8 @@ creds.yml
 creds.yaml
 creds.properties
 creds.json
+
+ci/body
+ci/commit_sha
+ci/tag
+ci/version
