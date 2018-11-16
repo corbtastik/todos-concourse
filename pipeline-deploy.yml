@@ -32,4 +32,3 @@ jobs:
   - put: resource-cf
     params:
       manifest: resource-release-output/manifest.yml
-      vars_files: resource-release-output/vars.yml
