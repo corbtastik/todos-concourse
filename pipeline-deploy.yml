@@ -24,7 +24,6 @@ jobs:
 - name: job-deploy
   plan:
   - get: resource-concourse
-    trigger: true
   - get: resource-release
     trigger: true   
   - task: task-deploy

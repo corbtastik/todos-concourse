@@ -29,7 +29,6 @@ jobs:
 - name: job-release
   plan:
   - get: resource-concourse
-    trigger: true
   - get: resource-source-code
     trigger: true   
   - get: resource-version
