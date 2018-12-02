@@ -1,4 +1,5 @@
 #!/bin/sh
+ls -al
 cd resource-source-code
 if [ -e index.html ]
 then
