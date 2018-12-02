@@ -31,7 +31,9 @@ jobs:
   - get: resource-concourse
     trigger: true
   - get: resource-source-code
-    trigger: true   
+    trigger: true
+  - task: task-build
+    file: resource-concourse/ci/detect.yml    
   - get: resource-version
     params: {bump: {{resource_version_bump}}, pre: {{resource_version_pre}}}
   - task: task-build
