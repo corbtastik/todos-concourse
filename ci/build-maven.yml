@@ -17,4 +17,4 @@ outputs:
   - name: resource-build-output
 
 run:
-  path: resource-concourse/ci/build-maven.sh
+  path: resource-concourse/ci/build_maven.sh
