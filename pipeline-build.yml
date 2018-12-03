@@ -19,13 +19,13 @@ jobs:
     trigger: true
   - task: task-detect
     file: resource-concourse/ci/detect.yml    
-# - name: job-build
-#   plan:
-#   - get: resource-concourse
-#   - get: resource-source-code
-#     trigger: true
-#     passed: [job-detect]    
-#   - task: task-build
-#     file: resource-concourse/ci/build-unit.yml
+- name: job-build
+  plan:
+  - get: resource-concourse
+  - get: resource-source-code
+    trigger: true
+    passed: [job-detect]    
+  - task: task-build
+    file: resource-concourse/ci/build-unit.yml
 
 
