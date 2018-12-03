@@ -1,0 +1,33 @@
+---
+resources:
+- name: resource-concourse
+  type: git
+  source:
+    uri: {{resource_concourse_uri}}
+    branch: {{resource_concourse_branch}}  
+- name: resource-version
+  type: semver
+  source:
+    driver: git
+    uri: {{resource_version_uri}}
+    branch: {{resource_version_branch}}
+    file: version
+    private_key: {{private-key-github}}       
+- name: resource-source-code
+  type: git
+  source:
+    uri: {{resource_source_code_uri}}
+    branch: {{resource_source_code_branch}}
+    private_key: {{private-key-github}}   
+jobs:
+- name: job-build
+  serial: true
+  plan:
+  - get: resource-concourse
+  - get: resource-source-code
+    trigger: true
+  - get: resource-version    
+  - task: task-detect
+    file: resource-concourse/ci/detect-unit.yml    
+  - task: task-build
+    file: resource-concourse/ci/build-static.yml
