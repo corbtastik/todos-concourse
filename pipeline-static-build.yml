@@ -39,7 +39,7 @@ jobs:
     file: resource-concourse/ci/build-static.yml
   - task: task-release
     params:
-      BUILD_NAME: ((build_name))
+      BUILD_NAME: {{build_name}}
     file: resource-concourse/ci/release-static.yml  
   - put: resource-release
     params:
