@@ -45,4 +45,4 @@ jobs:
       tag: resource-release-output/release-tag
       body: resource-release-output/release-body
       globs:
-      - resource-build-output/*  
+      - resource-release-output/release-bits.tar  
