@@ -45,4 +45,4 @@ jobs:
       tag: resource-release-output/release-tag
       body: resource-release-output/release-body
       globs:
-      - resource-release-output/{{build_name}}-{{version}}-release.tar
+      - resource-release-output/todos-ui-1.0.52-HOWDY.1-release.tar
