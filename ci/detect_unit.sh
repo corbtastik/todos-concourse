@@ -14,7 +14,7 @@ elif [ -e package.json ]
 then
     echo "node" > ../resource-unit-output/detected
 else
-    echo "null" > ../resource-unit-output/detected
+    echo "null unit"
 fi
 echo "detected:"
 cat ../resource-unit-output/detected

@@ -8,6 +8,7 @@ image_resource:
 inputs:
   - name: resource-concourse
   - name: resource-source-code
+  - name: resource-version  
   - name: resource-unit-output
 
 outputs:
