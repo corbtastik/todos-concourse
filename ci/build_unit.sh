@@ -1,4 +1,5 @@
 #!/bin/sh
+ls -al
 export DETECTED=`cat ../resource-unit-output/detected`
 static_build() {
     echo "static_build"
