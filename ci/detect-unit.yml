@@ -8,10 +8,9 @@ image_resource:
 inputs:
   - name: resource-concourse
   - name: resource-source-code
-  - name: resource-unit-output
 
 outputs:
   - name: resource-unit-output
 
 run:
-  path: resource-concourse/ci/build_unit.sh
+  path: resource-concourse/ci/detect_unit.sh

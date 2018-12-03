@@ -1,5 +1,25 @@
 #!/bin/sh
-export DETECTED=`cat ../resource-detect-output/detected`
+export DETECTED=`cat ../resource-unit-output/detected`
+static_build() {
+    echo "static_build"
+}
+
+maven_build() {
+    echo "maven_build"
+}
+
+gradle_build() {
+    echo "gradle_build"
+}
+
+node_build() {
+    echo "node_build"
+}
+
+null_build() {
+    echo "null_build"
+}
+
 case $DETECTED in
     [staticfile]* )
         static_build
@@ -15,23 +35,3 @@ case $DETECTED in
         break;;                
     * ) null_build;;
 esac
-
-function static_build() {
-    echo "static_build"
-}
-
-function maven_build() {
-    echo "maven_build"
-}
-
-function gradle_build() {
-    echo "gradle_build"
-}
-
-function node_build() {
-    echo "node_build"
-}
-
-function null_build() {
-    echo "null_build"
-}
