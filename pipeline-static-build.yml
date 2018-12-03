@@ -38,6 +38,8 @@ jobs:
   - task: task-build
     file: resource-concourse/ci/build-static.yml
   - task: task-release
+    params:
+      BUILD_NAME: ((build_name))
     file: resource-concourse/ci/release-static.yml  
   - put: resource-release
     params:
@@ -45,4 +47,4 @@ jobs:
       tag: resource-release-output/release-tag
       body: resource-release-output/release-body
       globs:
-      - resource-release-output/todos-ui-1.0.52-HOWDY.1-release.tar
+      - resource-release-output/*.tar
