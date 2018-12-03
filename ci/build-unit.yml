@@ -11,7 +11,7 @@ inputs:
   - name: resource-unit-output
 
 outputs:
-  - name: resource-unit-output
+  - name: resource-build-output
 
 run:
   path: resource-concourse/ci/build_unit.sh
