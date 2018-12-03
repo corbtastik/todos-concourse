@@ -3,9 +3,7 @@ platform: linux
 
 image_resource:
   type: docker-image
-  source:
-    repository: openjdk
-    tag: '8-jdk-alpine'
+  source: {repository: ubuntu}
 
 inputs:
   - name: resource-source-code
@@ -13,7 +11,7 @@ inputs:
   - name: resource-version
 
 outputs:
-  - name: resource-build-output
+  - name: resource-build-static-output
 
 run:
-  path: resource-concourse/ci/build.sh
+  path: resource-concourse/ci/build_static.sh
