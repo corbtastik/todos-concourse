@@ -3,7 +3,7 @@ ls -al
 cd resource-source-code
 if [ -e index.html ]
 then
-    echo "staticfile" > ../resource-unit-output/detected
+    echo "static" > ../resource-unit-output/detected
 elif [ -e pom.xml ]
 then
     echo "maven" > ../resource-unit-output/detected
