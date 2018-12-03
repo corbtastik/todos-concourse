@@ -18,7 +18,13 @@ resources:
   source:
     uri: {{resource_source_code_uri}}
     branch: {{resource_source_code_branch}}
-    private_key: {{private-key-github}}   
+    private_key: {{private-key-github}} 
+- name: resource-release
+  type: github-release
+  source:
+    owner: {{resource_release_owner}}
+    repository: {{resource_release_repository}}
+    access_token: {{private-token-github}}       
 jobs:
 - name: job-build
   serial: true
@@ -30,4 +36,15 @@ jobs:
   - task: task-detect
     file: resource-concourse/ci/detect-unit.yml    
   - task: task-build
-    file: resource-concourse/ci/build-unit.yml
+    file: resource-concourse/ci/build-maven.yml
+  - task: task-release
+    params:
+      BUILD_NAME: {{build_name}}
+    file: resource-concourse/ci/release-static.yml  
+  - put: resource-release
+    params:
+      name: resource-release-output/release-name
+      tag: resource-release-output/release-tag
+      body: resource-release-output/release-body
+      globs:
+      - resource-release-output/*.tar
