@@ -13,13 +13,13 @@ resources:
     branch: {{resource_version_branch}}
     file: version
     private_key: {{private-key-github}}       
-- name: resource-source-code
+- name: resource-unit
   type: git
   source:
     uri: {{resource_source_code_uri}}
     branch: {{resource_source_code_branch}}
     private_key: {{private-key-github}} 
-- name: resource-release-repo
+- name: resource-release-unit
   type: github-release
   source:
     owner: {{resource_release_owner}}
@@ -30,7 +30,7 @@ jobs:
   serial: true
   plan:
   - get: resource-concourse
-  - get: resource-source-code
+  - get: resource-unit
     trigger: true
   - get: resource-version    
   - task: task-detect
@@ -41,7 +41,7 @@ jobs:
     params:
       BUILD_NAME: {{build_name}}
     file: resource-concourse/ci/release-static.yml  
-  - put: resource-release-repo
+  - put: resource-release-unit
     params:
       name: resource-release/release-name
       tag: resource-release/release-tag
