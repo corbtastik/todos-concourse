@@ -27,6 +27,8 @@ jobs:
   - get: resource-release
     trigger: true   
   - task: task-deploy
+    params:
+      BUILD_ARTIFACT: {{build_artifact}}  
     file: resource-concourse/ci/deploy.yml
   - put: resource-cf
     params:
