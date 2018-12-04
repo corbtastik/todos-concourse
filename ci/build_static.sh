@@ -1,13 +1,13 @@
 #!/bin/sh
 ls -al
-export DETECTED=`cat resource-unit-output/detected`
+export DETECTED=`cat resource-detect/detected`
 if [ "${DETECTED}" = "static" ]; then
     export VERSION=`cat resource-version/version`
     echo "static_build: $DETECTED $VERSION"
-    cd resource-source-code
-    cp -R . ../resource-build-output/
+    cd resource-unit
+    cp -R . ../resource-build/
     cd ..
-    cd resource-build-output
+    cd resource-build
     ls -al
     cd ..
 fi
