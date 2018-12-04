@@ -4,7 +4,7 @@ BUILD_NAME=`cat resource-release/body | grep -w "build.name" | cut -d'=' -f2`
 BUILD_ARTIFACT=`cat resource-release/body | grep -w "build.artifact" | cut -d'=' -f2`
 BUILD_GROUP=`cat resource-release/body | grep -w "build.group" | cut -d'=' -f2`
 BUILD_VERSION=`cat resource-release/body | grep -w "build.version" | cut -d'=' -f2`
-
+cat resource-release/body
 tar xf resource-release/${BUILD_ARTIFACT}-${BUILD_VERSION}-release.tar
 ls -al
 ls -al resource-release/
