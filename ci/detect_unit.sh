@@ -1,21 +1,21 @@
 #!/bin/sh
 ls -al
-cd resource-source-code
+cd resource-unit
 if [ -e index.html ]
 then
-    echo "static" > ../resource-unit-output/detected
+    echo "static" > ../resource-detect/detected
 elif [ -e pom.xml ]
 then
-    echo "maven" > ../resource-unit-output/detected
+    echo "maven" > ../resource-detect/detected
 elif [ -e build.grade ]
 then
-    echo "gradle" > ../resource-unit-output/detected
+    echo "gradle" > ../resource-detect/detected
 elif [ -e package.json ]
 then
-    echo "node" > ../resource-unit-output/detected
+    echo "node" > ../resource-detect/detected
 else
     echo "null unit"
 fi
 echo "detected:"
-cat ../resource-unit-output/detected
+cat ../resource-detect/detected
 cd ..

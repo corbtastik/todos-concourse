@@ -19,7 +19,7 @@ resources:
     uri: {{resource_source_code_uri}}
     branch: {{resource_source_code_branch}}
     private_key: {{private-key-github}} 
-- name: resource-release
+- name: resource-release-repo
   type: github-release
   source:
     owner: {{resource_release_owner}}
@@ -41,10 +41,10 @@ jobs:
     params:
       BUILD_NAME: {{build_name}}
     file: resource-concourse/ci/release-static.yml  
-  - put: resource-release
+  - put: resource-release-repo
     params:
-      name: resource-release-output/release-name
-      tag: resource-release-output/release-tag
-      body: resource-release-output/release-body
+      name: resource-release/release-name
+      tag: resource-release/release-tag
+      body: resource-release/release-body
       globs:
-      - resource-release-output/*.tar
+      - resource-release/*.tar

@@ -6,13 +6,13 @@ image_resource:
   source: {repository: ubuntu}
 
 inputs:
-  - name: resource-source-code
   - name: resource-concourse
+  - name: resource-unit  
   - name: resource-version
-  - name: resource-unit-output
+  - name: resource-detect
 
 outputs:
-  - name: resource-build-output
+  - name: resource-build
 
 run:
   path: resource-concourse/ci/build_static.sh

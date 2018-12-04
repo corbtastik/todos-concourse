@@ -6,12 +6,12 @@ image_resource:
   source: {repository: ubuntu}
 
 inputs:
-  - name: resource-build-output
   - name: resource-concourse
-  - name: resource-version  
+  - name: resource-build
+  - name: resource-version
 
 outputs:
-  - name: resource-release-output
+  - name: resource-release
 
 run:
   path: resource-concourse/ci/release_static.sh

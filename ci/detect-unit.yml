@@ -7,10 +7,10 @@ image_resource:
 
 inputs:
   - name: resource-concourse
-  - name: resource-source-code
+  - name: resource-unit
 
 outputs:
-  - name: resource-unit-output
+  - name: resource-detect
 
 run:
   path: resource-concourse/ci/detect_unit.sh
