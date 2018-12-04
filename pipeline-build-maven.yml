@@ -16,8 +16,8 @@ resources:
 - name: resource-unit
   type: git
   source:
-    uri: {{resource_source_code_uri}}
-    branch: {{resource_source_code_branch}}
+    uri: {{resource_unit_uri}}
+    branch: {{resource_unit_branch}}
     private_key: {{private-key-github}} 
 - name: resource-release-unit
   type: github-release
