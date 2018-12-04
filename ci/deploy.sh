@@ -5,7 +5,7 @@ BUILD_ARTIFACT=`cat resource-release/body | grep -w "build.artifact" | cut -d'='
 BUILD_GROUP=`cat resource-release/body | grep -w "build.group" | cut -d'=' -f2`
 BUILD_VERSION=`cat resource-release/body | grep -w "build.version" | cut -d'=' -f2`
 
-tar xf resource-release/${BUILD_ARTIFACT}-${BUILD_VERSION}.tar
+tar xf resource-release/${BUILD_ARTIFACT}-${BUILD_VERSION}-release.tar
 ls -al
 ls -al resource-release/
 # cp resource-release/${BUILD_ARTIFACT}-${BUILD_VERSION}.jar resource-deploy/
