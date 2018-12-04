@@ -8,9 +8,10 @@ image_resource:
 inputs:
   - name: resource-concourse
   - name: resource-release
+  - name: resource-manifests  
 
 outputs:
-  - name: resource-release-output
+  - name: resource-deploy
 
 run:
   path: resource-concourse/ci/deploy.sh        

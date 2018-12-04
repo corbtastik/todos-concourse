@@ -9,4 +9,5 @@ applications:
   - java_buildpack
   env:
     TODOS_API_LIMIT: 128
-    EUREKA_CLIENT_ENABLED: false      
+    EUREKA_CLIENT_ENABLED: false
+    SPRING_CLOUD_CONFIG_ENABLED: false      

@@ -5,6 +5,6 @@ BUILD_ARTIFACT=`cat resource-release/body | grep -w "build.artifact" | cut -d'='
 BUILD_GROUP=`cat resource-release/body | grep -w "build.group" | cut -d'=' -f2`
 BUILD_VERSION=`cat resource-release/body | grep -w "build.version" | cut -d'=' -f2`
 
-cp resource-release/${BUILD_ARTIFACT}-${BUILD_VERSION}.jar resource-release-output/
+cp resource-release/${BUILD_ARTIFACT}-${BUILD_VERSION}.jar resource-deploy/
 sed -e "s/\${artifact}/${BUILD_ARTIFACT}-${BUILD_VERSION}.jar/" \
-    resource-concourse/ci/manifest/${BUILD_ARTIFACT}-manifest.yml > resource-release-output/manifest.yml
+    resource-concourse/ci/manifest/${BUILD_ARTIFACT}-manifest.yml > resource-deploy/manifest.yml

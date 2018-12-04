@@ -30,4 +30,4 @@ jobs:
     file: resource-concourse/ci/deploy.yml
   - put: resource-cf
     params:
-      manifest: resource-release-output/manifest.yml
+      manifest: resource-deploy/manifest.yml
