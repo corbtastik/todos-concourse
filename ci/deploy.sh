@@ -9,9 +9,5 @@ fi
 
 if [ -e resource-deploy/index.html ]; then
     echo "resource-deploy/index.html found"
-    ls -al resource-deploy/
-    cat resource-concourse/ci/manifest/${BUILD_ARTIFACT}-manifest.yml
     cat resource-concourse/ci/manifest/${BUILD_ARTIFACT}-manifest.yml > resource-deploy/manifest-cicd.yml
-    ls -al resource-deploy/    
-    cat resource-deploy/manifest-cicd.yml
 fi
