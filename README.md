@@ -96,3 +96,7 @@ fly sp -t todos-cicd -c pipeline-deploy.yml -p todos-webflux-deploy -l creds.yml
 This script pulls 4 releases from Github and pushes to Cloud Foundry.  You'll want to change the cf manifest files contained in the [``ci/manifest``](/ci/manifest) folder to suit your liking.
 
 Once this completed all apps should be running in CF.
+
+<p align="center">
+    <img src="https://github.com/corbtastik/todos-images/raw/master/todos-concourse/pipeline-build-480w.png">
+</p>
