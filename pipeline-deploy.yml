@@ -32,4 +32,4 @@ jobs:
     file: resource-concourse/ci/deploy.yml
   - put: resource-cf
     params:
-      manifest: resource-deploy/manifest.yml
+      manifest: resource-deploy/manifest-cicd.yml
