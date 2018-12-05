@@ -2,6 +2,7 @@
 applications:
 - name: todos-ui
   memory: 512M
+  path: .
   routes:
   - route: https://corbs-todos-ui.cfapps.io
   buildpack: staticfile_buildpack
