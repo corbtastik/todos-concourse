@@ -3,13 +3,13 @@ applications:
 - name: todos-cloud-gateway
   memory: 1G
   routes:
-  - route: https://corbs-todos-cloud-gateway.cfapps.io
+  - route: https://todos-cloud-gateway-corbs.cfapps.io
   path: ${artifact}
   buildpacks: 
   - java_buildpack
   env:
-    TODOS_UI_ENDPOINT: https://corbs-todos-ui.cfapps.io
-    TODOS_API_ENDPOINT: https://corbs-todos-api.cfapps.io
+    TODOS_UI_ENDPOINT: https://todos-ui-corbs.cfapps.io
+    TODOS_API_ENDPOINT: https://todos-api-corbs.cfapps.io
     EUREKA_CLIENT_ENABLED: false
     SPRING_CLOUD_CONFIG_ENABLED: false
          

@@ -4,7 +4,6 @@ applications:
   memory: 512M
   path: .
   routes:
-  - route: https://corbs-todos-ui.cfapps.io
-  buildpack: staticfile_buildpack
-  env:
-    APP_VERSION: 1.0.0.SNAP
+  - route: https://todos-ui-corbs.cfapps.io
+  buildpacks: 
+  - staticfile_buildpack  

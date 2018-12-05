@@ -3,7 +3,7 @@ applications:
 - name: todos-api
   memory: 1G
   routes:
-  - route: https://corbs-todos-api.cfapps.io
+  - route: https://todos-api-corbs.cfapps.io
   path: ${artifact}
   buildpacks: 
   - java_buildpack
