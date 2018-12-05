@@ -10,5 +10,6 @@ fi
 
 if [ -e index.html ]; then
     echo "index.html found"
+    ls -al
     cat resource-concourse/ci/manifest/${BUILD_ARTIFACT}-manifest.yml > resource-deploy/manifest-cicd.yml
 fi
