@@ -97,8 +97,14 @@ This script pulls 4 releases from Github and pushes to Cloud Foundry.  You'll wa
 
 Once completed all apps should be running in CF.
 
-
+**Concourse Pipelines**
 
 <p align="center">
     <img src="https://github.com/corbtastik/todos-images/raw/master/todos-concourse/pipeline-build.png" width="480">
+</p>
+
+**Concourse Deployed Todos UI**
+
+<p align="center">
+    <img src="https://github.com/corbtastik/todos-images/raw/master/todos-concourse/pipeline-deploy-ui.png" width="480">
 </p>
