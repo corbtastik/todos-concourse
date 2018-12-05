@@ -18,13 +18,16 @@ There are 2 different types of pipelines in this repository.
 
 You'll need [Concourse](https://concourse-ci.org/download.html) up and running or access to an existing deployment.
 
-Next you should [fork this repository](https://github.com/corbtastik/todos-concourse) so you'll be able to make commits to the scripts and pipelines as needed out of your repo.  Once you've forked, just clone as normal and replace ``https://github.com/corbtastik/todos-concourse.git`` with ``https://github.com/YOU/todos-concourse.git`` in the scripts and you'll be cooking with gas.
+Next you should fork these repositories since you'll want to make commits.
 
-There are 2 scripts provided for convenience.  One to build releases and another to deploy those releases to Cloud Foundry.  
+1. [Todo(s) Concourse](https://github.com/corbtastik/todos-concourse.git)
+1. [Todo(s) Version](https://github.com/corbtastik/todos-version.git)
 
-**pipeline_build.sh** 
+There are 2 scripts provided for convenience.  One to [build releases](/pipeline_build.sh) and another to [deploy those releases to Cloud Foundry](/pipeline_deploy.sh).  
 
-This script runs fly commands to create release pipelines for each application (``resource_unit_uri``) and branch (``resource_unit_branch``).  Secrets for commit access to the git resources are saved locally in ``creds.yml``, which should *NOT* be committed to scm (may peanut butter be stuck between your toes should you commit this file).  As a safeguard ``creds.yml`` is added in ``.gitignore``.  So having said that, you'll need to roll your [github private key](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) and cloud foundry creds in this file.
+## Secrets
+
+Secrets for commit access to the git resources are saved locally in ``creds.yml``, which should *NOT* be committed to scm.  As a safeguard ``creds.yml`` is added in ``.gitignore``.  So having said that, you'll need to roll your [github private key](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/), a [personal access token](https://github.com/settings/tokens) and Cloud Foundry creds in this file.
 
 Here's what my ``creds.yml`` file looks like (replace the blah).
 
@@ -43,17 +46,53 @@ private-key-github: |
   -----END RSA PRIVATE KEY-----
 ```
 
+## Build Release Pipelines
+
+The gist is you need the Concourse Resource for ci/scripts, the Version repo to control versioning, the Unit repo as the source to integrate and a Release repo to save the release bits.
+
+Snippet of ``pipeline_build.sh`` that deploys one pipeline for the [Todo(s) API](https://github.com/corbtastik/todos-api) app.
+
 ```bash
 fly sp -t todos-cicd -c pipeline-build-maven.yml -p todos-api-build -l creds.yml \
   -v build_name=todos-api \
   -v resource_concourse_branch=master \
-  -v resource_concourse_uri=https://github.com/corbtastik/todos-concourse.git \
+  -v resource_concourse_uri=https://github.com/CHANGEME/todos-concourse.git \
   -v resource_unit_branch=master \
-  -v resource_unit_uri=git@github.com:corbtastik/todos-api.git \
+  -v resource_unit_uri=git@github.com:CHANGEME/todos-api.git \
   -v resource_version_branch=master \
   -v resource_version_bump=patch \
   -v resource_version_pre=HOWDY \
-  -v resource_version_uri=git@github.com:corbtastik/todos-version.git \
-  -v resource_release_owner=corbtastik \
+  -v resource_version_uri=git@github.com:CHANGEME/todos-version.git \
+  -v resource_release_owner=CHANGEME \
   -v resource_release_repository=todos-api
-``` 
+```
+
+Replace ``CHANGEME`` with your github user/org name.  Assuming you've forked the repos then you're all set to run ``pipeline_build.sh``.
+
+This pulls 4 repositories...
+
+1. [Todo(s) API](https://github.com/corbtastik/todos-api) - Todos backing API implemented in Spring Boot
+2. [Todo(s) WebFlux](https://github.com/corbtastik/todos-webflux.git) - ^^^ using Reactive Stack
+3. [Todo(s) Cloud Gateway](https://github.com/corbtastik/todos-cloud-gateway) - Spring Cloud Gateway edge router, sits between UI and API
+4. [Todo(s) UI](https://github.com/corbtastik/todos-ui) - Vue.js Todos app
+
+Then builds, tests and uploads release bits to each individual repository on Github.  New releases can be triggered by committing a new version of the ``version`` file in the [todos-version repo](https://github.com/corbtastik/todos-version) you forked :)
+
+## Deploy Release Pipelines
+
+The ``pipeline_deploy.sh`` script runs fly commands to create pipelines to deploy a release from Github to Cloud Foundry.  [Pivotal Web Services](https://run.pivotal.io) is used as the CF platform.  It needs the same ``creds.yml`` file as it also contains Cloud Foundry information.
+
+Snippet of ``pipeline_deploy.sh`` that deploys one pipeline to take the release for [Todo(s) WebFlux](https://github.com/corbtastik/todos-webflux) and deploy to Cloud Foundry.
+
+```bash
+fly sp -t todos-cicd -c pipeline-deploy.yml -p todos-webflux-deploy -l creds.yml \
+  -v build_artifact=todos-webflux \
+  -v resource_concourse_branch=master \
+  -v resource_concourse_uri=https://github.com/corbtastik/todos-concourse.git \
+  -v resource_release_owner=corbtastik \
+  -v resource_release_repository=todos-webflux  
+```
+
+This script pulls 4 releases from Github and pushes to Cloud Foundry.  You'll want to change the cf manifest files contained in the [``ci/manifests``](/ci/manifests) folder to suit your liking.
+
+Once this completed all apps should be running in CF.
