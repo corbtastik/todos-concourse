@@ -4,6 +4,7 @@ applications:
   memory: 1G
   routes:
   - route: https://todos-cloud-gateway-corbs.cfapps.io
+  - route: https://todos-for-you.cfapps.io  
   path: ${artifact}
   buildpacks: 
   - java_buildpack
