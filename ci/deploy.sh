@@ -11,3 +11,8 @@ if [ -e resource-deploy/index.html ]; then
     echo "resource-deploy/index.html found"
     cat resource-concourse/ci/manifest/${BUILD_ARTIFACT}-manifest.yml > resource-deploy/manifest-cicd.yml
 fi
+
+if [ -e resource-deploy/package.json ]; then
+    echo "resource-deploy/package.json found"
+    cat resource-concourse/ci/manifest/${BUILD_ARTIFACT}-manifest.yml > resource-deploy/manifest-cicd.yml
+fi
