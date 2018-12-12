@@ -3,6 +3,7 @@ applications:
 - name: todos-nodejs
   random-route: true
   memory: 512MB  
+  path: .
   command: node app.js
   buildpacks: 
   - nodejs_buildpack  
