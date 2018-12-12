@@ -69,12 +69,13 @@ fly sp -t todos-cicd -c pipeline-build-maven.yml -p todos-api-build -l creds.yml
 
 Replace ``CHANGEME`` with your github user/org name.  Assuming you've forked the repos then you're all set to run ``pipeline_build.sh``.
 
-This pulls 4 repositories...
+This pulls 5 repositories...
 
 1. [Todo(s) API](https://github.com/corbtastik/todos-api) - Todos backing API implemented in Spring Boot
 2. [Todo(s) WebFlux](https://github.com/corbtastik/todos-webflux.git) - ^^^ using Reactive Stack
 3. [Todo(s) Cloud Gateway](https://github.com/corbtastik/todos-cloud-gateway) - Spring Cloud Gateway edge router, sits between UI and API
 4. [Todo(s) UI](https://github.com/corbtastik/todos-ui) - Vue.js Todos app
+5. [Todo(s) Node.js](https://github.com/corbtastik/todos-nodejs) - Todos backing API implemented in Node.js
 
 Then builds, tests and uploads release bits to each individual repository on Github.  New releases can be triggered by committing a new version of the ``version`` file in the [todos-version repo](https://github.com/corbtastik/todos-version) you forked :)
 
@@ -93,7 +94,7 @@ fly sp -t todos-cicd -c pipeline-deploy.yml -p todos-webflux-deploy -l creds.yml
   -v resource_release_repository=todos-webflux  
 ```
 
-This script pulls 4 releases from Github and pushes to Cloud Foundry.  You'll want to change the cf manifest files contained in the [``ci/manifest``](/ci/manifest) folder to suit your liking.
+This script pulls the 5 releases from Github and pushes to Cloud Foundry.  You'll want to change the cf manifest files contained in the [``ci/manifest``](/ci/manifest) folder to suit your liking.
 
 Once completed all apps should be running in CF.
 

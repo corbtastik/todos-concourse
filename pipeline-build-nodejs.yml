@@ -31,7 +31,6 @@ jobs:
   plan:
   - get: resource-concourse
   - get: resource-unit
-    trigger: true
   - get: resource-version    
     trigger: true  
   - task: task-detect
