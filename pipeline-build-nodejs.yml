@@ -1,0 +1,50 @@
+---
+resources:
+- name: resource-concourse
+  type: git
+  source:
+    uri: {{resource_concourse_uri}}
+    branch: {{resource_concourse_branch}}  
+- name: resource-version
+  type: semver
+  source:
+    driver: git
+    uri: {{resource_version_uri}}
+    branch: {{resource_version_branch}}
+    file: version
+    private_key: {{private-key-github}}       
+- name: resource-unit
+  type: git
+  source:
+    uri: {{resource_unit_uri}}
+    branch: {{resource_unit_branch}}
+    private_key: {{private-key-github}} 
+- name: resource-release-unit
+  type: github-release
+  source:
+    owner: {{resource_release_owner}}
+    repository: {{resource_release_repository}}
+    access_token: {{private-token-github}}       
+jobs:
+- name: job-build
+  serial: true
+  plan:
+  - get: resource-concourse
+  - get: resource-unit
+  - get: resource-version    
+    trigger: true  
+  - task: task-detect
+    file: resource-concourse/ci/detect-unit.yml    
+  - task: task-build
+    file: resource-concourse/ci/build-nodejs.yml
+  - task: task-release
+    params:
+      BUILD_NAME: {{build_name}}
+    file: resource-concourse/ci/release-static.yml  
+  - put: resource-release-unit
+    params:
+      name: resource-release/release-name
+      tag: resource-release/release-tag
+      body: resource-release/release-body
+      globs:
+      - resource-release/*.tar
