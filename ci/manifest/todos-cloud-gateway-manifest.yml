@@ -3,8 +3,8 @@ applications:
 - name: todos-cloud-gateway
   memory: 1G
   routes:
-  - route: https://todos-cloud-gateway.cfapps.io
-  - route: https://todosforyou.cfapps.io  
+  - route: todos-cloud-gateway.cfapps.io
+  - route: todosforyou.cfapps.io  
   path: ${artifact}
   buildpacks: 
   - java_buildpack

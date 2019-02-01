@@ -3,7 +3,7 @@ applications:
 - name: todos-webflux
   memory: 1G
   routes:
-  - route: https://todos-webflux.cfapps.io
+  - route: todos-webflux.cfapps.io
   path: ${artifact}
   buildpacks: 
   - java_buildpack
