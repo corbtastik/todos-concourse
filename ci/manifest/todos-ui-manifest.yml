@@ -4,6 +4,6 @@ applications:
   memory: 512M
   path: .
   routes:
-  - route: https://todos-ui-corbs.cfapps.io
+  - route: https://todos-ui.cfapps.io
   buildpacks: 
   - staticfile_buildpack  
