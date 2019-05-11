@@ -2,11 +2,9 @@
 applications:
 - name: todos-api
   memory: 1G
-  routes:
-  - route: todos-api.cfapps.io
   path: ${artifact}
   buildpacks: 
-  - java_buildpack
+  - java_buildpack_offline
   env:
     TODOS_API_LIMIT: 64
     EUREKA_CLIENT_ENABLED: false
