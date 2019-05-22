@@ -19,7 +19,7 @@ resources:
     password: {{resource_cf_password}}
     organization: {{resource_cf_org}}
     space: {{resource_cf_space}}
-    skip_cert_check: false
+    skip_cert_check: true 
 jobs:
 - name: job-deploy
   plan:

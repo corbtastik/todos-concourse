@@ -3,9 +3,7 @@ applications:
 - name: todos-api
   memory: 1G
   path: ${artifact}
-  buildpacks: 
-  - java_buildpack_offline
   env:
-    TODOS_API_LIMIT: 64
+    TODOS_API_LIMIT: 2048
     EUREKA_CLIENT_ENABLED: false
     SPRING_CLOUD_CONFIG_ENABLED: false      

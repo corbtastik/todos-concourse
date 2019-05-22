@@ -13,4 +13,5 @@ outputs:
   - name: resource-deploy
 
 run:
-  path: resource-concourse/ci/deploy.sh        
+  path: resource-concourse/ci/deploy.sh    
+  
