@@ -73,8 +73,8 @@ This pulls 5 repositories...
 
 1. [Todo(s) API](https://github.com/corbtastik/todos-api) - Todos backing API implemented in Spring Boot
 2. [Todo(s) WebFlux](https://github.com/corbtastik/todos-webflux.git) - ^^^ using Reactive Stack
-3. [Todo(s) Cloud Gateway](https://github.com/corbtastik/todos-cloud-gateway) - Spring Cloud Gateway edge router, sits between UI and API
-4. [Todo(s) UI](https://github.com/corbtastik/todos-ui) - Vue.js Todos app
+3. [Todo(s) Cloud Gateway](https://github.com/corbtastik/todos-edge) - Spring Cloud Gateway edge router, sits between UI and API
+4. [Todo(s) UI](https://github.com/corbtastik/todos-webui) - Vue.js Todos app
 5. [Todo(s) Node.js](https://github.com/corbtastik/todos-nodejs) - Todos backing API implemented in Node.js
 
 Then builds, tests and uploads release bits to each individual repository on Github.  New releases can be triggered by committing a new version of the ``version`` file in the [todos-version repo](https://github.com/corbtastik/todos-version) you forked :)

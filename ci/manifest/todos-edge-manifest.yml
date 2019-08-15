@@ -1,13 +1,8 @@
 ---
 applications:
-- name: todos-edge
+- name: concourse-todos-edge
   memory: 1G
-  routes:
-  - route: todos-edge.apps.retro.io
-  - route: todos.apps.retro.io  
   path: ${artifact}
   env:
-    TODOS_UI_ENDPOINT: https://todos-webui.apps.retro.io
-    TODOS_API_ENDPOINT: https://todos-api.apps.retro.io
-    EUREKA_CLIENT_ENABLED: false
-    SPRING_CLOUD_CONFIG_ENABLED: false
+    TODOS_UI_ENDPOINT: https://concourse-todos-webui.apps.retro.io
+    TODOS_API_ENDPOINT: https://concourse-todos-api.apps.retro.io

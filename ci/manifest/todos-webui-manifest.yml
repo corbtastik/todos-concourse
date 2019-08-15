@@ -3,3 +3,5 @@ applications:
 - name: todos-webui
   memory: 1G
   path: ${artifact}
+  env:
+    SPRING_SECURITY_USER_NAME: 'Concourse' 

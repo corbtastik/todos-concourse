@@ -4,6 +4,4 @@ applications:
   memory: 1G
   path: ${artifact}
   env:
-    TODOS_API_LIMIT: 2048
-    EUREKA_CLIENT_ENABLED: false
-    SPRING_CLOUD_CONFIG_ENABLED: false      
+    TODOS_API_LIMIT: 1024      
